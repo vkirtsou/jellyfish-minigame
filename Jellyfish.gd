@@ -21,6 +21,7 @@ func _ready():
 	#jelly_button.connect("pressed", self, "_jelly_clicked")
 	jelly_anim = get_node("Position2D/jelly_anim")
 	bubble_player = get_node("bubblePlayer")
+	bubble_player.connect("audio_finished", self, "_on_sound_finished")
 	phonetic_player = get_node("PhoneticPlayer")
 	fx_anim = get_node("animator_fx")
 	left_GUI_gd = load("left GUI.gd")
@@ -106,7 +107,8 @@ func play_animation_correct():
 		game_manager.pause_game(false)
 		jelly_anim.set_opacity(0.3)			# make the jelly look "disabled"/unselectable
 	else:
-		# TODO: do other stuff
+		#play sound "level completed"
+		play_sound_level_completed()
 		pass
 		
 func play_animation_wrong():
@@ -117,8 +119,14 @@ func play_animation_wrong():
 	yield(jelly_anim, "finished" )
 	#get_tree().call_group(0, "GUI buttons", "set_disabled", false)		#enable the menu buttons --> NOW DONE IN game_manager -> pause_game
 #	get_tree().set_pause(false)		#unpause the game
-	game_manager.pause_game(false)
-	jelly_anim.set_opacity(0.3)		# make the jelly look "disabled"/unselectable
+	if (!game_manager.i >= 4):
+		game_manager.pause_game(false)
+		jelly_anim.set_opacity(0.3)			# make the jelly look "disabled"/unselectable
+	else:
+		#play sound "level completed"
+		play_sound_level_completed()
+		pass
+
 
 func play_sound_phonetic():
 	phonetic_player.play("phoneme_o", true);
@@ -131,11 +139,21 @@ func play_sound_correct():		# waiting for audio files
 func play_sound_wrong():		# waiting for audio files
 	pass	
 	
+func play_sound_level_completed():
+	bubble_player.play_sound("jellyfish_bubble_random_05")
+	#yield(bubble_player, "audio_finished")
+	
+	
 func show_success_fx():
 	fx_anim.play("success_fx")				# had to change animator_fx to pause mode -> process in order to play!
 	
 func show_fail_fx():
 	fx_anim.play("fail_fx")
+
+func _on_sound_finished():
+	print("finished playing")
+	game_manager.game_over()
+	
 #func show_success_fx(opacity_val):
 #	is_showing_fx = true;
 #	get_node("fx_success").set_opacity(opacity_val)

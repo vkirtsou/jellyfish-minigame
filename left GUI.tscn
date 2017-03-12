@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=1]
+[gd_scene load_steps=16 format=1]
 
 [ext_resource path="res://left GUI.gd" type="Script" id=1]
 [ext_resource path="res://graphics/ui/button_back_thin_stroke.png" type="Texture" id=2]
@@ -7,12 +7,17 @@
 [ext_resource path="res://graphics/ui/ShellButton0001.png" type="Texture" id=5]
 [ext_resource path="res://graphics/ui/ShellButton0003.png" type="Texture" id=6]
 [ext_resource path="res://graphics/ui/ShellButton0004.png" type="Texture" id=7]
-[ext_resource path="res://graphics/ui/PauseButton0001.png" type="Texture" id=8]
-[ext_resource path="res://graphics/ui/PauseButton0003.png" type="Texture" id=9]
-[ext_resource path="res://graphics/ui/PauseButton0004.png" type="Texture" id=10]
-[ext_resource path="res://graphics/ui/button_kalulu_thin_stroke.png" type="Texture" id=11]
-[ext_resource path="res://graphics/ui/button_kalulu_large_stroke.png" type="Texture" id=12]
-[ext_resource path="res://graphics/ui/button_kalulu_disabled.png" type="Texture" id=13]
+[ext_resource path="res://audio/phonemes/phoneme_o.wav" type="Sample" id=8]
+[ext_resource path="res://graphics/ui/PauseButton0001.png" type="Texture" id=9]
+[ext_resource path="res://graphics/ui/PauseButton0003.png" type="Texture" id=10]
+[ext_resource path="res://graphics/ui/PauseButton0004.png" type="Texture" id=11]
+[ext_resource path="res://graphics/ui/button_kalulu_thin_stroke.png" type="Texture" id=12]
+[ext_resource path="res://graphics/ui/button_kalulu_large_stroke.png" type="Texture" id=13]
+[ext_resource path="res://graphics/ui/button_kalulu_disabled.png" type="Texture" id=14]
+
+[sub_resource type="SampleLibrary" id=1]
+
+samples/phoneme_o = { "db":0.0, "pitch":1.0, "sample":ExtResource( 8 ) }
 
 [node name="Control" type="Control"]
 
@@ -90,6 +95,23 @@ textures/pressed = ExtResource( 6 )
 textures/disabled = ExtResource( 7 )
 params/scale = Vector2( 0.7, 0.7 )
 
+[node name="phoneticPlayer" type="SamplePlayer" parent="OuterBox/InnerBox/shell_button"]
+
+config/polyphony = 1
+config/samples = SubResource( 1 )
+default/volume_db = 0.0
+default/pitch_scale = 1.0
+default/pan = 0.0
+default/depth = 0.0
+default/height = 0.0
+default/filter/type = 0
+default/filter/cutoff = 5000.0
+default/filter/resonance = 1.0
+default/filter/gain = 1.0
+default/reverb_room = 2
+default/reverb_send = 0.0
+default/chorus_send = 0.0
+
 [node name="pause_button" type="TextureButton" parent="OuterBox/InnerBox" groups=[ "GUI buttons" ]]
 
 rect/min_size = Vector2( 50, 50 )
@@ -104,9 +126,9 @@ margin/bottom = 424.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
-textures/normal = ExtResource( 8 )
-textures/pressed = ExtResource( 9 )
-textures/disabled = ExtResource( 10 )
+textures/normal = ExtResource( 9 )
+textures/pressed = ExtResource( 10 )
+textures/disabled = ExtResource( 11 )
 params/scale = Vector2( 0.7, 0.7 )
 
 [node name="kalulu_button" type="TextureButton" parent="OuterBox" groups=[ "GUI buttons" ]]
@@ -123,8 +145,8 @@ margin/bottom = 1158.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
-textures/normal = ExtResource( 11 )
-textures/pressed = ExtResource( 12 )
-textures/disabled = ExtResource( 13 )
+textures/normal = ExtResource( 12 )
+textures/pressed = ExtResource( 13 )
+textures/disabled = ExtResource( 14 )
 
 
