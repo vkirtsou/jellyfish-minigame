@@ -10,8 +10,5 @@ func _on_ButtonCancel_pressed():
 	game_manager.pause_game(false)
 	get_parent().queue_free()
 	
-	
 func _on_ButtonConfirm_pressed():
-	game_manager.pause_game(false)
-	get_parent().queue_free()
-	
+	get_tree().quit()

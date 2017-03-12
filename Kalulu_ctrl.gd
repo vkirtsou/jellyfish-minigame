@@ -1,8 +1,5 @@
 extends Control
 
-# class member variables go here, for example:
-# var a = 2
-# var b = "textvar"
 var kalulu_anim
 var kalulu_player
 var sound_playing
@@ -46,5 +43,5 @@ func _on_sound_finished(key):
 	if (!key == "kalulu_end_jellyfish_language"):
 		game_manager.pause_game(false)	
 	else:
-		pass
-		# instantiate the button on the right
+		# show the button on the right
+		get_tree().get_root().get_child(1).get_child(2).get_child(8).get_node("ExitCtrl").show()
