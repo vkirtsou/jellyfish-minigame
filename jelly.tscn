@@ -130,7 +130,6 @@ transform/pos = Vector2( 2.39999, 82.4 )
 transform/scale = Vector2( 0.4, 0.4 )
 frames = SubResource( 1 )
 animation = "b_default"
-frame = 4
 playing = true
 
 [node name="jelly_button" type="Button" parent="Position2D/jelly_anim"]

@@ -68,16 +68,18 @@ func choose_jelly_properties():
 		is_correct_jelly = false
 
 func _on_jelly_button_pressed():
-	game_manager.click_tries()
 	game_manager.pause_game(true)		# pause the game but not the jelly animations
 	play_sound_bubble()					# play the bubble/select sound
 	if is_correct_jelly:				# if jelly has a letter (is correct)
 		play_sound_phonetic()
 		play_sound_correct()
-		play_animation_correct()	
+		play_animation_correct()
+		mark_a_try("correct")
 	else:								# if jelly doesn't have a letter (is wrong)
 		play_sound_wrong()
 		play_animation_wrong()
+		mark_a_try("wrong")
+	game_manager.click_tries()
 	jelly_button.set_disabled(true)		# disable the button of the jellyfish in any case
 	# TODO: mark a jelly life "done" -> Missing graphic assets!
 	
@@ -89,7 +91,7 @@ func play_animation_correct():
 	yield(jelly_anim, "finished")
 	jelly_anim.set_animation(jelly_color_anim["default"])
 	yield(jelly_anim, "finished")
-	if (!game_manager.clicks >= game_manager.jellies_to_catch):		# if there are still jellies to catch
+	if (!game_manager.tries >= game_manager.jellies_to_catch):		# if there are still jellies to catch
 		game_manager.pause_game(false)		# unpause
 		jelly_anim.set_opacity(0.3)			# make the jelly look "disabled"/unselectable
 	else:									# level complete: special effects + sounds (missing sound assets! temp substituted with a bubble sound)
@@ -101,7 +103,7 @@ func play_animation_wrong():
 	show_fail_fx()
 	jelly_anim.set_animation(jelly_color_anim["default"])
 	yield(jelly_anim, "finished" )
-	if (!game_manager.clicks >= game_manager.jellies_to_catch):		# if there are still jellies to catch
+	if (!game_manager.tries >= game_manager.jellies_to_catch):		# if there are still jellies to catch
 		game_manager.pause_game(false)		# unpause
 		jelly_anim.set_opacity(0.3)			# make the jelly look "disabled"/unselectable
 	else:
@@ -133,3 +135,9 @@ func _on_sound_finished(key):
 	print("finished playing")
 	game_manager.game_over()
 	
+func mark_a_try(evaluation):
+	var triesCtrl = get_tree().get_current_scene().get_node("HBoxContainer/Lane7/triesCtrl")
+	if (evaluation == "correct"):
+		triesCtrl.mark_try_as_correct(game_manager.tries)
+	else:
+		triesCtrl.mark_try_as_wrong(game_manager.tries)

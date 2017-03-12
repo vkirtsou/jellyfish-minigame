@@ -1,19 +1,18 @@
 extends Node
 
 var jellies_to_catch = 4
-var clicks = 0
+var tries = 0
 var kalulu_scene
 
 func _ready():
 	kalulu_scene = preload("res://Kalulu_ctrl.tscn")			#had to preload because it takes a lot of time to load due to image errors
-	
+	pass
 func click_tries():
-	clicks = clicks + 1
+	tries = tries + 1
 		
 func pause_game(someBool):
 	get_tree().set_pause(someBool)				# pause the game
 	if (get_tree().get_current_scene().get_name() == "mainCtrl"):
-		#var tint = get_tree().get_root().get_child(1).get_node("tint")			#TODO: CHANGE
 		var tint = get_tree().get_current_scene().get_node("tint")
 		if someBool:		#if we want to pause show a tint
 			tint.show()
