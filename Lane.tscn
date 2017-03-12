@@ -1,6 +1,4 @@
-[gd_scene load_steps=2 format=1]
-
-[ext_resource path="res://temp/red.png" type="Texture" id=1]
+[gd_scene format=1]
 
 [node name="Lane" type="Control"]
 
@@ -23,13 +21,5 @@ margin/left = 0.0
 margin/top = 0.0
 margin/right = 200.0
 margin/bottom = 950.0
-
-[node name="bg" type="Sprite" parent="Lane"]
-
-visibility/visible = false
-material/use_parent = true
-transform/scale = Vector2( 1.6, 11.7284 )
-texture = ExtResource( 1 )
-centered = false
 
 

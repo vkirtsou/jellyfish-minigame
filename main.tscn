@@ -45,10 +45,15 @@ alignment = 0
 
 [node name="Control" parent="HBoxContainer" instance=ExtResource( 3 )]
 
+editor/display_folded = true
 size_flags/horizontal = 3
 size_flags/vertical = 3
 margin/right = 157.0
 margin/bottom = 970.0
+
+[node name="OuterBox" parent="HBoxContainer/Control"]
+
+editor/display_folded = true
 
 [node name="InnerBox" parent="HBoxContainer/Control/OuterBox"]
 

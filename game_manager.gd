@@ -36,7 +36,8 @@ func game_over():
 	print("game over")
 	is_level_complete = true
 	var kalulu = kalulu_scene.instance()
-	add_child(kalulu)
+	var ctrlGUI = get_tree().get_root().get_child(1).get_child(2).get_node("Control")
+	ctrlGUI.add_child(kalulu)
 	kalulu.end()
 	game_manager.pause_game(true)
 	

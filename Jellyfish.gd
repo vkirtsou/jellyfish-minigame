@@ -30,6 +30,8 @@ func _ready():
 	red_jelly_animations = { "default": "r_default", "selected": "r_selected", "happy": "r_happy" }
 	set_process(true)
 	randomize()
+	#get_node("Position2D/jelly_anim/ParticlesLeft2").hide()
+	#get_node("Position2D/jelly_anim/ParticlesRight2").hide()
 	choose_jelly_properties()		# choose the color of the jelly, as well as if it has a phonetic or no
 	
 func _process(delta):
@@ -53,10 +55,15 @@ func choose_jelly_properties():
 		get_node("Position2D/jelly_anim/fx_fail").set_scale(fx_new_scale)
 		get_node("Position2D/jelly_anim/fx_fail2").set_pos(new_pos)		# reposition and rescale the fx to fit the (smaller) red jelly
 		get_node("Position2D/jelly_anim/fx_fail2").set_scale(fx_new_scale)
+		get_node("Position2D/jelly_anim/ParticlesLeft").set_pos(Vector2(0, 13))		# reposition and rescale the fx to fit the (smaller) red jelly
+		get_node("Position2D/jelly_anim/ParticlesLeft").set_scale(fx_new_scale)
+		get_node("Position2D/jelly_anim/ParticlesRight").set_pos(Vector2(0, 13))
+		get_node("Position2D/jelly_anim/ParticlesRight").set_scale(fx_new_scale)
 		get_node("Position2D/jelly_anim/phonetic_label").set_pos(Vector2(-50, -75))
-		jelly_button.set_pos(Vector2(50, 30))
+		jelly_button.set_pos(Vector2(-75, -80))
 		jelly_button.set_size(btn_new_size)
-	
+		
+		
 	else:
 		print("blue")# TODO: DELETE
 		jelly_color_anim = blue_jelly_animations

@@ -26,7 +26,7 @@ func help():			# kalulu help --> kalulu button
 	talk_animations()
 
 func end():				#kalulu end
-	get_parent().hide_kalulu_button()
+	get_parent().get_node('.').hide_kalulu_button()
 	kalulu_anim.set_animation("show")
 	yield(kalulu_anim, "finished")
 	kalulu_player.play_sound("kalulu_end_jellyfish_language")
