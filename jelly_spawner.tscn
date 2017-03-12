@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=1]
+
+[ext_resource path="res://jelly_spawner.gd" type="Script" id=1]
+
+[node name="jelly_spawner" type="Position2D"]
+
+transform/pos = Vector2( 80, 970 )
+script/script = ExtResource( 1 )
+minWaitTime = 3.0
+maxWaitTime = 12.0
+
+[node name="timer" type="Timer" parent="."]
+
+process_mode = 1
+wait_time = 2.0
+one_shot = true
+autostart = false
+
+
