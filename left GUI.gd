@@ -5,8 +5,6 @@ var shell_button
 var pause_button
 var kalulu_button
 
-var buttons
-
 func _ready():
 	
 	button_back = get_node("OuterBox/button_back")
@@ -17,10 +15,7 @@ func _ready():
 	shell_button.connect("pressed", self, "_on_shell_button_pressed")
 	pause_button.connect("pressed", self, "_on_pause_button_pressed")
 	kalulu_button.connect("pressed", self, "_on_kalulu_button_pressed")
-	
-	set_process(true)
 
-	#kalulu_button.
 func _on_back_button_pressed():				# back button: instantiate the popup scene
 	var back_popup_scene = preload("res://back_dialog_window.tscn")
 	var back_popup = back_popup_scene.instance()
@@ -38,7 +33,6 @@ func _on_pause_button_pressed():			# pause button: instatiate the pause scene
 	game_manager.pause_game(true)
 	
 func _on_kalulu_button_pressed():			
-	#var kalulu_scene = preload("res://Kalulu_ctrl.tscn")	
 	var kalulu_scene = game_manager.get_kalulu_scene()
 	var kalulu = kalulu_scene.instance()
 	add_child(kalulu)

@@ -9,7 +9,8 @@ var fx_anim			#the animatorPlayer for the correct/wrong fx
 var blue_jelly_animations	# dictionary with the animations for the blue jelly
 var red_jelly_animations	# dictionary with the animations for the red jelly
 var jelly_color_anim		# dictionary of the jelly animations for the color that was randomly selected
-var is_correct_jelly
+var is_correct_jelly		# bool to differentiate between correct/wrong jellyfish
+
 func _ready():
 	jelly_button = get_node("Position2D/jelly_anim/jelly_button")
 	jelly_anim = get_node("Position2D/jelly_anim")
@@ -19,9 +20,9 @@ func _ready():
 	fx_anim = get_node("animator_fx")
 	blue_jelly_animations = { "default": "b_default", "selected": "b_selected", "happy": "b_happy" }
 	red_jelly_animations = { "default": "r_default", "selected": "r_selected", "happy": "r_happy" }
-	set_process(true)
 	randomize()
 	choose_jelly_properties()		# choose the color of the jelly, as well as if it has a phonetic or no
+	set_process(true)
 	
 func _process(delta):
 	if !get_node("animator").is_playing():		# delete the jelly when out of the screen
@@ -35,6 +36,7 @@ func choose_jelly_properties():
 		var fx_new_scale = Vector2(0.3, 0.3)
 		var btn_new_size = Vector2(150, 180)
 		jelly_color_anim = red_jelly_animations
+		# apply the changes in the graphics and effects for the smaller red jelly
 		get_node("Position2D/jelly_anim/fx_success").set_pos(new_pos)		# reposition and rescale the fx to fit the (smaller) red jelly
 		get_node("Position2D/jelly_anim/fx_success").set_scale(fx_new_scale)
 		get_node("Position2D/jelly_anim/fx_fail").set_pos(new_pos)		# reposition and rescale the fx to fit the (smaller) red jelly
@@ -45,8 +47,9 @@ func choose_jelly_properties():
 		get_node("Position2D/jelly_anim/ParticlesLeft").set_scale(fx_new_scale)
 		get_node("Position2D/jelly_anim/ParticlesRight").set_pos(Vector2(0, 13))
 		get_node("Position2D/jelly_anim/ParticlesRight").set_scale(fx_new_scale)
+		get_node("Position2D/jelly_anim/ParticlesFail").set_scale(Vector2(0.2, 0.2))
 		get_node("Position2D/jelly_anim/phonetic_label").set_pos(Vector2(-50, -75))
-		jelly_button.set_pos(Vector2(-75, -80))
+		jelly_button.set_pos(Vector2(50, 30))
 		jelly_button.set_size(btn_new_size)
 	else:
 		jelly_color_anim = blue_jelly_animations
@@ -87,7 +90,7 @@ func play_animation_correct():
 	jelly_anim.set_animation(jelly_color_anim["default"])
 	yield(jelly_anim, "finished")
 	if (!game_manager.clicks >= game_manager.jellies_to_catch):		# if there are still jellies to catch
-		game_manager.pause_game(false)
+		game_manager.pause_game(false)		# unpause
 		jelly_anim.set_opacity(0.3)			# make the jelly look "disabled"/unselectable
 	else:									# level complete: special effects + sounds (missing sound assets! temp substituted with a bubble sound)
 		play_sound_level_completed()
@@ -95,11 +98,11 @@ func play_animation_correct():
 func play_animation_wrong():
 	jelly_anim.set_animation(jelly_color_anim["selected"])
 	yield(jelly_anim, "finished" )
-	show_fail_fx()				
+	show_fail_fx()
 	jelly_anim.set_animation(jelly_color_anim["default"])
 	yield(jelly_anim, "finished" )
 	if (!game_manager.clicks >= game_manager.jellies_to_catch):		# if there are still jellies to catch
-		game_manager.pause_game(false)
+		game_manager.pause_game(false)		# unpause
 		jelly_anim.set_opacity(0.3)			# make the jelly look "disabled"/unselectable
 	else:
 		play_sound_level_completed()		
@@ -123,6 +126,8 @@ func show_success_fx():
 	
 func show_fail_fx():
 	fx_anim.play("fail_fx")
+	yield(fx_anim, "finished")
+	play_sound_phonetic()
 
 func _on_sound_finished(key):
 	print("finished playing")

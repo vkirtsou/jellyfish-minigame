@@ -100,6 +100,11 @@ tracks/1/path = NodePath("Position2D/jelly_anim/fx_fail2:visibility/opacity")
 tracks/1/interp = 1
 tracks/1/imported = false
 tracks/1/keys = { "times":FloatArray( 0, 0.1, 0.2, 1 ), "transitions":FloatArray( 1, 1, 1, 1 ), "update":0, "values":[ 0.0, 0.5, 1.0, 0.0 ] }
+tracks/2/type = "value"
+tracks/2/path = NodePath("Position2D/jelly_anim/ParticlesFail:config/emitting")
+tracks/2/interp = 1
+tracks/2/imported = false
+tracks/2/keys = { "times":FloatArray( 0, 0.1, 0.7 ), "transitions":FloatArray( 1, 1, 1 ), "update":0, "values":[ false, true, false ] }
 
 [node name="Jelly_control" type="Control"]
 
@@ -124,7 +129,8 @@ process/pause_mode = 2
 transform/pos = Vector2( 2.39999, 82.4 )
 transform/scale = Vector2( 0.4, 0.4 )
 frames = SubResource( 1 )
-animation = "r_default"
+animation = "b_default"
+frame = 4
 playing = true
 
 [node name="jelly_button" type="Button" parent="Position2D/jelly_anim"]
@@ -250,6 +256,36 @@ params/anim_initial_pos = 0.0
 randomness/direction = 0.12
 randomness/initial_size = 0.3
 randomness/final_size = 0.6
+
+[node name="ParticlesFail" type="Particles2D" parent="Position2D/jelly_anim"]
+
+visibility/opacity = 0.6
+transform/pos = Vector2( 6.50002, -18.5 )
+transform/scale = Vector2( 0.38, 0.39 )
+config/amount = 8
+config/lifetime = 8.0
+config/time_scale = 10.0
+config/preprocess = 0.1
+config/emitting = false
+config/explosiveness = 0.5
+config/texture = ExtResource( 42 )
+params/direction = 0.0
+params/spread = 180.0
+params/linear_velocity = 50.0
+params/spin_velocity = 0.3
+params/orbit_velocity = 0.0
+params/gravity_direction = 0.0
+params/gravity_strength = 7.0
+params/radial_accel = 0.0
+params/tangential_accel = 0.0
+params/damping = 0.0
+params/initial_angle = 0.0
+params/initial_size = 1.0
+params/final_size = 1.0
+params/hue_variation = 0.0
+params/anim_speed_scale = 1.0
+params/anim_initial_pos = 0.0
+randomness/spread = 0.3
 
 [node name="bubblePlayer" type="SamplePlayer" parent="."]
 

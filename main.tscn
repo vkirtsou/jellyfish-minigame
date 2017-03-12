@@ -49,7 +49,7 @@ alignment = 0
 editor/display_folded = true
 size_flags/horizontal = 3
 size_flags/vertical = 3
-margin/right = 157.0
+margin/right = 177.0
 margin/bottom = 970.0
 
 [node name="OuterBox" parent="HBoxContainer/Control"]
@@ -64,8 +64,8 @@ editor/display_folded = true
 
 size_flags/horizontal = 3
 size_flags/vertical = 3
-margin/left = 161.0
-margin/right = 318.0
+margin/left = 181.0
+margin/right = 358.0
 margin/bottom = 970.0
 
 [node name="SpawnLane1" parent="HBoxContainer" instance=ExtResource( 4 )]
@@ -73,8 +73,8 @@ margin/bottom = 970.0
 editor/display_folded = true
 size_flags/horizontal = 3
 size_flags/vertical = 3
-margin/left = 322.0
-margin/right = 479.0
+margin/left = 362.0
+margin/right = 539.0
 margin/bottom = 970.0
 
 [node name="jelly_spawner" parent="HBoxContainer/SpawnLane1" instance=ExtResource( 5 )]
@@ -83,8 +83,8 @@ margin/bottom = 970.0
 
 size_flags/horizontal = 3
 size_flags/vertical = 3
-margin/left = 483.0
-margin/right = 640.0
+margin/left = 543.0
+margin/right = 720.0
 margin/bottom = 970.0
 
 [node name="SpawnLane2" parent="HBoxContainer" instance=ExtResource( 4 )]
@@ -92,8 +92,8 @@ margin/bottom = 970.0
 editor/display_folded = true
 size_flags/horizontal = 3
 size_flags/vertical = 3
-margin/left = 644.0
-margin/right = 801.0
+margin/left = 724.0
+margin/right = 901.0
 margin/bottom = 970.0
 
 [node name="jelly_spawner" parent="HBoxContainer/SpawnLane2" instance=ExtResource( 5 )]
@@ -102,8 +102,8 @@ margin/bottom = 970.0
 
 size_flags/horizontal = 3
 size_flags/vertical = 3
-margin/left = 805.0
-margin/right = 962.0
+margin/left = 905.0
+margin/right = 1082.0
 margin/bottom = 970.0
 
 [node name="SpawnLane3" parent="HBoxContainer" instance=ExtResource( 4 )]
@@ -111,14 +111,15 @@ margin/bottom = 970.0
 editor/display_folded = true
 size_flags/horizontal = 3
 size_flags/vertical = 3
-margin/left = 966.0
-margin/right = 1123.0
+margin/left = 1086.0
+margin/right = 1263.0
 margin/bottom = 970.0
 
 [node name="jelly_spawner" parent="HBoxContainer/SpawnLane3" instance=ExtResource( 5 )]
 
 [node name="Lane6" parent="HBoxContainer" instance=ExtResource( 4 )]
 
+visibility/visible = false
 size_flags/horizontal = 3
 size_flags/vertical = 3
 margin/left = 1127.0
@@ -129,7 +130,7 @@ margin/bottom = 970.0
 
 size_flags/horizontal = 3
 size_flags/vertical = 3
-margin/left = 1288.0
+margin/left = 1267.0
 margin/right = 1450.0
 margin/bottom = 970.0
 

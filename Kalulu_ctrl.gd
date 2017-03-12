@@ -44,4 +44,4 @@ func _on_sound_finished(key):
 		game_manager.pause_game(false)	
 	else:
 		# show the button on the right
-		get_tree().get_root().get_child(1).get_child(2).get_child(8).get_node("ExitCtrl").show()
+		get_tree().get_current_scene().get_node("HBoxContainer/Lane7/ExitCtrl").show()

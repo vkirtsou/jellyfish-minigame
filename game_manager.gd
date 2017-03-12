@@ -13,7 +13,8 @@ func click_tries():
 func pause_game(someBool):
 	get_tree().set_pause(someBool)				# pause the game
 	if (get_tree().get_current_scene().get_name() == "mainCtrl"):
-		var tint = get_tree().get_root().get_child(1).get_node("tint")
+		#var tint = get_tree().get_root().get_child(1).get_node("tint")			#TODO: CHANGE
+		var tint = get_tree().get_current_scene().get_node("tint")
 		if someBool:		#if we want to pause show a tint
 			tint.show()
 		else:				# if we want to resume hide the tint
@@ -28,7 +29,8 @@ func is_game_paused():
 		
 func game_over():
 	var kalulu = kalulu_scene.instance()		#instantiate kalulu scene
-	var ctrlGUI = get_tree().get_root().get_child(1).get_child(2).get_node("Control")
+	#var ctrlGUI = get_tree().get_root().get_child(1).get_child(2).get_node("Control")
+	var ctrlGUI = get_tree().get_current_scene().get_node("HBoxContainer/Control")
 	ctrlGUI.add_child(kalulu)
 	kalulu.end()								# play the ending animation from kalulu
 	

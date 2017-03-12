@@ -78,6 +78,7 @@ alignment = 0
 
 [node name="shell_button" type="TextureButton" parent="OuterBox/InnerBox" groups=[ "GUI buttons" ]]
 
+editor/display_folded = true
 rect/min_size = Vector2( 50, 50 )
 focus/ignore_mouse = false
 focus/stop_mouse = true

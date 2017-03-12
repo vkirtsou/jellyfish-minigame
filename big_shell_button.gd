@@ -13,7 +13,7 @@ func _ready():
 	pos = small_shell.get_global_pos()
 	
 func _on_Shell_button_big_pressed():
-	get_node("shell_animator").get_animation("shell_zoomout").track_set_key_value(0, 1, pos)
+	get_node("shell_animator").get_animation("shell_zoomout").track_set_key_value(0, 1, pos)	# use the position of the small shell in the screen
 	get_node("Shell_button_big").set_disabled(true)
 	get_node("shell_animator").play("shell_zoomout")			#play the animation
 	get_node("phoneticPlayer").play("phoneme_o", true);			#play the phonetic
