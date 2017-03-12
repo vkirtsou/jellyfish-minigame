@@ -7,9 +7,11 @@ func _ready():
 	get_node("ButtonConfirm").connect("pressed", self, "_on_ButtonConfirm_pressed")
 	
 func _on_ButtonCancel_pressed():
-	get_parent().queue_free()
 	game_manager.pause_game(false)
+	get_parent().queue_free()
+	
 	
 func _on_ButtonConfirm_pressed():
-	get_parent().queue_free()
 	game_manager.pause_game(false)
+	get_parent().queue_free()
+	

@@ -22,7 +22,7 @@ func _ready():
 
 	#kalulu_button.
 func _on_back_button_pressed():				# back button: instantiate the popup scene
-	var back_popup_scene = load("res://back_dialog_window.tscn")
+	var back_popup_scene = preload("res://back_dialog_window.tscn")
 	var back_popup = back_popup_scene.instance()
 	add_child(back_popup)
 	game_manager.pause_game(true)
@@ -32,7 +32,7 @@ func _on_shell_button_pressed():			# shell button: play the sound
 	shell_button.get_node("phoneticPlayer").play("phoneme_o", false);
 	
 func _on_pause_button_pressed():			# pause button: instatiate the pause scene
-	var pause_popup_scene = load("res://pause_dialog_window.tscn")
+	var pause_popup_scene = preload("res://pause_dialog_window.tscn")
 	var pause_popup = pause_popup_scene.instance()
 	add_child(pause_popup)
 	game_manager.pause_game(true)

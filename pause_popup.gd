@@ -5,7 +5,7 @@ func _ready():
 	set_pos(Vector2(viewport_size.width/2, viewport_size.height/2)) # center it
 	get_node("ButtonResume").connect("pressed", self, "_on_ButtonResume_pressed")
 
-	
 func _on_ButtonResume_pressed():
-	get_parent().queue_free()
 	game_manager.pause_game(false)
+	get_parent().queue_free()
+	

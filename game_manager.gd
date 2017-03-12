@@ -1,20 +1,14 @@
 extends Node
 
 var jellies_to_catch = 4
-var i = 0
+var clicks = 0
 var kalulu_scene
-var is_level_complete
 
 func _ready():
 	kalulu_scene = preload("res://Kalulu_ctrl.tscn")			#had to preload because it takes a lot of time to load due to image errors
-	is_level_complete = false
 	
 func click_tries():
-	print("clicked!")
-	i = i + 1
-	if (i == jellies_to_catch):
-		#game_over()
-		pass
+	clicks = clicks + 1
 		
 func pause_game(someBool):
 	get_tree().set_pause(someBool)				# pause the game
@@ -33,13 +27,10 @@ func is_game_paused():
 		return false
 		
 func game_over():
-	print("game over")
-	is_level_complete = true
-	var kalulu = kalulu_scene.instance()
+	var kalulu = kalulu_scene.instance()		#instantiate kalulu scene
 	var ctrlGUI = get_tree().get_root().get_child(1).get_child(2).get_node("Control")
 	ctrlGUI.add_child(kalulu)
-	kalulu.end()
-	game_manager.pause_game(true)
+	kalulu.end()								# play the ending animation from kalulu
 	
 func get_kalulu_scene():
 	return kalulu_scene

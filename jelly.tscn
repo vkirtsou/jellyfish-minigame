@@ -113,7 +113,6 @@ margin/top = -20.0
 margin/right = 20.0
 margin/bottom = 20.0
 script/script = ExtResource( 1 )
-is_correct_jelly = true
 
 [node name="Position2D" type="Position2D" parent="."]
 
@@ -126,6 +125,7 @@ transform/pos = Vector2( 2.39999, 82.4 )
 transform/scale = Vector2( 0.4, 0.4 )
 frames = SubResource( 1 )
 animation = "r_default"
+frame = 5
 playing = true
 
 [node name="jelly_button" type="Button" parent="Position2D/jelly_anim"]
