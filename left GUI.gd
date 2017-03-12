@@ -45,3 +45,6 @@ func _on_kalulu_button_pressed():
 	game_manager.pause_game(true)
 	kalulu.help()
 	
+func hide_kalulu_button():
+	get_node("OuterBox/kalulu_button").set_opacity(0)
+	

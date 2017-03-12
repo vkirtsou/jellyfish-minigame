@@ -26,6 +26,7 @@ func help():			# kalulu help --> kalulu button
 	talk_animations()
 
 func end():				#kalulu end
+	get_parent().hide_kalulu_button()
 	kalulu_anim.set_animation("show")
 	yield(kalulu_anim, "finished")
 	kalulu_player.play_sound("kalulu_end_jellyfish_language")
@@ -38,10 +39,12 @@ func talk_animations():
 		kalulu_anim.set_animation("talk2")
 		yield(kalulu_anim, "finished")
 
-
-func _on_sound_finished():
+func _on_sound_finished(key):
 	kalulu_anim.set_animation("hide")
 	yield(kalulu_anim, "finished")
 	queue_free()
-	game_manager.pause_game(false)	
-	
+	if (!key == "kalulu_end_jellyfish_language"):
+		game_manager.pause_game(false)	
+	else:
+		pass
+		# instantiate the button on the right

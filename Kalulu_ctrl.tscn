@@ -95,7 +95,7 @@ transform/pos = Vector2( 210, 680 )
 transform/scale = Vector2( 0.6, 0.6 )
 frames = SubResource( 1 )
 animation = "show"
-frame = 8
+frame = 12
 playing = true
 
 [node name="kaluluPlayer" type="SamplePlayer" parent="CanvasLayer"]

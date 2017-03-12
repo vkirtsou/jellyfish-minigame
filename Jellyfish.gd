@@ -141,8 +141,6 @@ func play_sound_wrong():		# waiting for audio files
 	
 func play_sound_level_completed():
 	bubble_player.play_sound("jellyfish_bubble_random_05")
-	#yield(bubble_player, "audio_finished")
-	
 	
 func show_success_fx():
 	fx_anim.play("success_fx")				# had to change animator_fx to pause mode -> process in order to play!
@@ -150,7 +148,7 @@ func show_success_fx():
 func show_fail_fx():
 	fx_anim.play("fail_fx")
 
-func _on_sound_finished():
+func _on_sound_finished(key):
 	print("finished playing")
 	game_manager.game_over()
 	
